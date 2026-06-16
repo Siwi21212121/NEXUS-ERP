@@ -1,0 +1,28 @@
+###
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Binusha",
+  "email": "binusha@gmail.com",
+  "password": "123456"
+}
+
+
+### Login
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "binusha@gmail.com",
+  "password": "123456"
+}
+
+###
+GET
+http://localhost:5000/api/hr/dashboard
+###
+GET /api/hr/dashboard
+
+###
+POST http://localhost:5000/api/auth/login
