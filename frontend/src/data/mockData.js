@@ -94,7 +94,7 @@ export const inventoryStatus = [
 export const aiMessages = [
   {
     id: 1,
-    sender: 'Nexus AI',
+    sender: 'ClarioNex AI',
     time: '2m ago',
     body:
       "I've analyzed the Q3 pipeline. We're trending 4% above target in North America, but APAC logistics costs are rising.",

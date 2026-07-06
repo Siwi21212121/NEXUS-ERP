@@ -1,12 +1,12 @@
-# Nexus ERP — Global Command Dashboard
+# ClarioNex ERP — Enterprise Intelligence Dashboard
 
-A React + Vite + Tailwind frontend for the Nexus ERP "Enterprise Intelligence
+A React + Vite + Tailwind frontend for the ClarioNex ERP "Enterprise Intelligence
 Center" dashboard, with sign up and login pages in front of it.
 
 ## File structure
 
 ```
-nexus-erp/
+clarionex-erp/
 ├── index.html
 ├── package.json
 ├── postcss.config.js
@@ -38,7 +38,7 @@ nexus-erp/
 
 ## Getting started in VS Code
 
-1. **Open the folder** `nexus-erp` in VS Code.
+1. **Open the folder** `clarionex-erp` in VS Code.
 2. **Install dependencies** (requires Node.js 18+):
 
    ```bash
@@ -59,10 +59,10 @@ nexus-erp/
 There's no backend yet, so authentication is simulated with `localStorage`:
 
 - **Sign up** (`/signup`) creates an account record in `localStorage`
-  (`nexus_erp_users`) and logs you straight in.
+  (`clarionex_erp_users`) and logs you straight in.
 - **Login** (`/login`) checks the email/password against those stored
   accounts.
-- A session is stored under `nexus_erp_session`. While a session exists,
+- A session is stored under `clarionex_erp_session`. While a session exists,
   visiting `/login` or `/signup` redirects you to `/dashboard`, and
   visiting `/dashboard` without a session redirects you to `/login`.
 - Click the logout icon next to your name in the sidebar to end the session.

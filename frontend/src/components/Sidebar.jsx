@@ -4,6 +4,7 @@ import {
   Wallet,
   Users,
   Boxes,
+  ShoppingCart,
   BarChart3,
   BrainCircuit,
   Settings,
@@ -52,6 +53,12 @@ export default function Sidebar() {
       moduleKey: 'supply-chain',
     },
     {
+      label: 'Procurement',
+      icon: ShoppingCart,
+      path: '/procurement',
+      moduleKey: 'procurement',
+    },
+    {
       label: 'Analytics',
       icon: BarChart3,
       path: '/analytics',
@@ -62,6 +69,12 @@ export default function Sidebar() {
       icon: BrainCircuit,
       path: '/ai-forecasting',
       moduleKey: 'ai-forecasting',
+    },
+    {
+      label: 'AI Copilot',
+      icon: BrainCircuit,
+      path: '/ai-copilot',
+      moduleKey: 'ai-copilot',
     },
   ]
 
@@ -84,10 +97,10 @@ export default function Sidebar() {
 
         <div>
           <p className="text-base font-bold leading-tight">
-            Nexus ERP
+            ClarioNex ERP
           </p>
           <p className="text-[10px] uppercase tracking-widest text-muted leading-tight">
-            Global Command
+            Enterprise Intelligence
           </p>
         </div>
       </div>

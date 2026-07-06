@@ -8,9 +8,11 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import HRPayroll from "./pages/HRPayroll";
 import Finance from "./pages/Finance";
-import SupplyChain from "./pages/SupplyChain";
-import Analytics from "./pages/Analytics";
+import SupplyChain from "./pages/InventoryLive";
+import Procurement from "./pages/Procurement";
+import Analytics from "./pages/AnalyticsLive";
 import AIForecasting from "./pages/AIForecasting";
+import AICopilot from "./pages/AICopilot";
 
 import ProtectedRoute from "./components/ProtectedRoute";
 import RoleRoute from "./components/RoleRoute";
@@ -103,6 +105,20 @@ function App() {
           }
         />
 
+        <Route
+          path="/procurement"
+          element={
+            <RoleRoute
+              allowedRoles={[
+                ROLES.PROJECT_MANAGER,
+                ROLES.OWNER,
+              ]}
+            >
+              <Procurement />
+            </RoleRoute>
+          }
+        />
+
         {/* Analytics */}
         <Route
           path="/analytics"
@@ -127,6 +143,22 @@ function App() {
               ]}
             >
               <AIForecasting />
+            </RoleRoute>
+          }
+        />
+
+        <Route
+          path="/ai-copilot"
+          element={
+            <RoleRoute
+              allowedRoles={[
+                ROLES.OWNER,
+                ROLES.HR_MANAGER,
+                ROLES.FINANCE_MANAGER,
+                ROLES.PROJECT_MANAGER,
+              ]}
+            >
+              <AICopilot />
             </RoleRoute>
           }
         />

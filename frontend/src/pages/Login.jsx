@@ -71,9 +71,9 @@ export default function Login() {
             <LayoutGrid size={18} className="text-white" />
           </div>
           <div>
-            <p className="text-lg font-bold leading-tight">Nexus ERP</p>
+            <p className="text-lg font-bold leading-tight">ClarioNex ERP</p>
             <p className="text-[11px] uppercase tracking-widest text-muted leading-tight">
-              Global Command
+              Enterprise Intelligence
             </p>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function Login() {
         </div>
 
         <p className="text-center text-xs text-muted mt-6">
-          Nexus Enterprise Resource Planning &middot; V4.2.0
+          ClarioNex Enterprise Resource Planning &middot; V4.2.0
         </p>
       </div>
     </div>

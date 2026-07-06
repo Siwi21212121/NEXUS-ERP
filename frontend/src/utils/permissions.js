@@ -12,20 +12,26 @@ export const ROLE_ACCESS = {
     'hr-payroll',
     'finance',
     'supply-chain',
+    'procurement',
     'analytics',
     'ai-forecasting',
+    'ai-copilot',
   ],
   [ROLES.HR_MANAGER]: [
     'dashboard',
     'hr-payroll',
+    'ai-copilot',
   ],
   [ROLES.FINANCE_MANAGER]: [
     'dashboard',
     'finance',
+    'ai-copilot',
   ],
   [ROLES.PROJECT_MANAGER]: [
     'dashboard',
     'supply-chain',
+    'procurement',
+    'ai-copilot',
   ],
   [ROLES.EMPLOYEE]: [
     'dashboard',
@@ -65,4 +71,12 @@ export function canViewForecasting(role = getStoredRole()) {
 
 export function canViewSupplyChain(role = getStoredRole()) {
   return canView(role, 'supply-chain')
+}
+
+export function canViewProcurement(role = getStoredRole()) {
+  return canView(role, 'procurement')
+}
+
+export function canViewAICopilot(role = getStoredRole()) {
+  return canView(role, 'ai-copilot')
 }

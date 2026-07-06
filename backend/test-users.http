@@ -1,0 +1,54 @@
+### OWNER
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Owner User",
+  "email": "owner@erp.com",
+  "password": "123456",
+  "role": "OWNER"
+}
+
+### HR
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "HR Manager",
+  "email": "hr@erp.com",
+  "password": "123456",
+  "role": "HR_MANAGER"
+}
+
+### FINANCE
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Finance Manager",
+  "email": "finance@erp.com",
+  "password": "123456",
+  "role": "FINANCE_MANAGER"
+}
+
+### PROJECT
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Project Manager",
+  "email": "project@erp.com",
+  "password": "123456",
+  "role": "PROJECT_MANAGER"
+}
+
+### EMPLOYEE
+POST http://localhost:5000/api/auth/signup
+Content-Type: application/json
+
+{
+  "name": "Employee User",
+  "email": "employee@erp.com",
+  "password": "123456",
+  "role": "EMPLOYEE"
+}

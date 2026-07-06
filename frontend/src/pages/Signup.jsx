@@ -84,11 +84,11 @@ export default function Signup() {
 
           <div>
             <p className="text-lg font-bold leading-tight">
-              Nexus ERP
+              ClarioNex ERP
             </p>
 
             <p className="text-[11px] uppercase tracking-widest text-muted leading-tight">
-              Global Command
+              Enterprise Intelligence
             </p>
           </div>
         </div>
@@ -248,10 +248,9 @@ export default function Signup() {
         </div>
 
         <p className="text-center text-xs text-muted mt-6">
-          Nexus Enterprise Resource Planning · V4.2.0
+          ClarioNex Enterprise Resource Planning · V4.2.0
         </p>
       </div>
     </div>
   )
 }
-

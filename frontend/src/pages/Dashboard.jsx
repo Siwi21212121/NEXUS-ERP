@@ -9,6 +9,7 @@ import AlertsPanel from '../components/AlertsPanel.jsx'
 import EmployeeDistribution from '../components/EmployeeDistribution.jsx'
 import InventoryStatus from '../components/InventoryStatus.jsx'
 import ActiveLogistics from '../components/ActiveLogistics.jsx'
+import DashboardAIPanel from '../components/DashboardAIPanel.jsx'
 import { stats } from '../data/mockData.js'
 import { useAuth } from '../context/AuthContext.jsx'
 import useRole from '../hooks/useRole.js'
@@ -218,6 +219,13 @@ export default function Dashboard() {
             ))}
           </div>
 
+          {(isOwner || isHR || isFinance || isProjectManager) && (
+            <DashboardAIPanel
+              moduleKey={isOwner ? 'executive' : isHR ? 'hr' : isFinance ? 'finance' : 'inventory'}
+              refreshKey={role}
+            />
+          )}
+
           {isOwner && (
             <>
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -322,7 +330,7 @@ export default function Dashboard() {
           )}
 
           <footer className="text-center text-xs text-muted py-4">
-            Nexus Enterprise Resource Planning &middot; V4.2.0 &middot; Last Sync: 02:45 UTC
+            ClarioNex Enterprise Resource Planning &middot; V4.2.0 &middot; Last Sync: 02:45 UTC
           </footer>
         </main>
       </div>

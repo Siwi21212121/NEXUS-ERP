@@ -2,12 +2,34 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 
 const AuthContext = createContext(null)
 
-const USERS_KEY = 'nexus_erp_users'
-const SESSION_KEY = 'nexus_erp_session'
+const LEGACY_USERS_KEY = 'nexus_erp_users'
+const LEGACY_SESSION_KEY = 'nexus_erp_session'
+const USERS_KEY = 'clarionex_erp_users'
+const SESSION_KEY = 'clarionex_erp_session'
+
+function isTokenUsable(token) {
+  if (!token) return false
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]))
+    return !payload.exp || payload.exp * 1000 > Date.now()
+  } catch {
+    return false
+  }
+}
+
+function clearStoredSession() {
+  localStorage.removeItem(SESSION_KEY)
+  localStorage.removeItem(LEGACY_SESSION_KEY)
+  localStorage.removeItem('token')
+  localStorage.removeItem('role')
+  localStorage.removeItem('user')
+}
 
 function readUsers() {
   try {
-    return JSON.parse(localStorage.getItem(USERS_KEY)) || []
+    return JSON.parse(localStorage.getItem(USERS_KEY)) ||
+      JSON.parse(localStorage.getItem(LEGACY_USERS_KEY)) ||
+      []
   } catch {
     return []
   }
@@ -23,18 +45,29 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     try {
+      const token = localStorage.getItem('token')
       const session =
         JSON.parse(localStorage.getItem(SESSION_KEY)) ||
+        JSON.parse(localStorage.getItem(LEGACY_SESSION_KEY)) ||
         JSON.parse(localStorage.getItem('user'))
 
-      if (session && session.role) {
+      if (session && session.role && isTokenUsable(token)) {
         setUser(session)
+      } else {
+        clearStoredSession()
       }
     } catch {
-      // ignore corrupted session
+      clearStoredSession()
     } finally {
       setLoading(false)
     }
+
+    function handleForcedLogout() {
+      setUser(null)
+    }
+
+    window.addEventListener('auth:logout', handleForcedLogout)
+    return () => window.removeEventListener('auth:logout', handleForcedLogout)
   }, [])
 
   function signup({ name, email, password }) {
@@ -83,17 +116,14 @@ export function AuthProvider({ children }) {
   }
 
   function logout() {
-    localStorage.removeItem(SESSION_KEY)
-    localStorage.removeItem('token')
-    localStorage.removeItem('role')
-    localStorage.removeItem('user')
+    clearStoredSession()
     setUser(null)
   }
 
   const authValue = {
     user,
     loading,
-    isAuthenticated: Boolean(user),
+    isAuthenticated: Boolean(user && isTokenUsable(localStorage.getItem('token'))),
     signup,
     login,
     setSession,
